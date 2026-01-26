@@ -2,45 +2,122 @@ import { useState } from 'react'
 import axios from 'axios'
 import { useNavigate, Link } from 'react-router-dom'
 import { toast } from 'react-toastify'
+import { UserPlus, Mail, Phone, Lock, User } from 'lucide-react'
 
 export default function Signup() {
-  const [form, setForm] = useState({})
+  const [form, setForm] = useState({ name: '', email: '', phone: '', password: '' })
+  const [loading, setLoading] = useState(false)
   const navigate = useNavigate()
 
   const submitHandler = async (e) => {
     e.preventDefault()
+    
+    if (!form.name || !form.email || !form.phone || !form.password) {
+      toast.error('Please fill in all fields')
+      return
+    }
+
+    setLoading(true)
     try {
       await axios.post('http://localhost:5000/api/auth/register', form)
-      toast.success('Signup Successful')
+      toast.success('Signup Successful! Please login.')
       navigate('/login')
     } catch(error) {
-      toast.error('Signup Failed', error)
+      toast.error(error.response?.data?.message || 'Signup Failed')
+    } finally {
+      setLoading(false)
     }
   }
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100">
-      <form onSubmit={submitHandler} className="bg-white p-6 rounded w-80">
-        <h2 className="text-xl font-bold mb-4">Signup</h2>
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-b from-slate-950 to-slate-900 py-8">
+      <form onSubmit={submitHandler} className="border border-emerald-900/20 rounded-lg bg-slate-900/50 p-8 w-full max-w-md">
+        <div className="flex items-center justify-center mb-8">
+          <UserPlus className="h-8 w-8 text-emerald-400 mr-3" />
+          <h2 className="text-2xl font-bold text-white">Create Account</h2>
+        </div>
 
-        <input className="w-full border p-2 mb-2" placeholder="Name"
-          onChange={e=>setForm({...form,name:e.target.value})} required />
+        <div className="space-y-4">
+          <div>
+            <label className="block text-sm font-medium text-white mb-2">
+              <User className="h-4 w-4 inline mr-2" />
+              Full Name
+            </label>
+            <input
+              className="w-full bg-slate-800 border border-slate-700 text-white rounded-lg px-4 py-3 focus:outline-none focus:border-emerald-500 transition-colors"
+              placeholder="Enter your name"
+              value={form.name}
+              onChange={e => setForm({ ...form, name: e.target.value })}
+              required
+            />
+          </div>
 
-        <input className="w-full border p-2 mb-2" placeholder="Email"
-          onChange={e=>setForm({...form,email:e.target.value})} required />
+          <div>
+            <label className="block text-sm font-medium text-white mb-2">
+              <Mail className="h-4 w-4 inline mr-2" />
+              Email
+            </label>
+            <input
+              className="w-full bg-slate-800 border border-slate-700 text-white rounded-lg px-4 py-3 focus:outline-none focus:border-emerald-500 transition-colors"
+              type="email"
+              placeholder="Enter your email"
+              value={form.email}
+              onChange={e => setForm({ ...form, email: e.target.value })}
+              required
+            />
+          </div>
 
-        <input className="w-full border p-2 mb-2" placeholder="Phone"
-          onChange={e=>setForm({...form,phone:e.target.value})} required />
+          <div>
+            <label className="block text-sm font-medium text-white mb-2">
+              <Phone className="h-4 w-4 inline mr-2" />
+              Phone Number
+            </label>
+            <input
+              className="w-full bg-slate-800 border border-slate-700 text-white rounded-lg px-4 py-3 focus:outline-none focus:border-emerald-500 transition-colors"
+              type="tel"
+              placeholder="Enter your phone"
+              value={form.phone}
+              onChange={e => setForm({ ...form, phone: e.target.value })}
+              required
+            />
+          </div>
 
-        <input className="w-full border p-2 mb-2" type="password" placeholder="Password"
-          onChange={e=>setForm({...form,password:e.target.value})} required />
+          <div>
+            <label className="block text-sm font-medium text-white mb-2">
+              <Lock className="h-4 w-4 inline mr-2" />
+              Password
+            </label>
+            <input
+              className="w-full bg-slate-800 border border-slate-700 text-white rounded-lg px-4 py-3 focus:outline-none focus:border-emerald-500 transition-colors"
+              type="password"
+              placeholder="Create a password"
+              value={form.password}
+              onChange={e => setForm({ ...form, password: e.target.value })}
+              required
+            />
+          </div>
+        </div>
 
-        <button className="w-full bg-green-600 text-white p-2 rounded">
-          Signup
+        <button
+          type="submit"
+          disabled={loading}
+          className="w-full mt-6 bg-emerald-500 hover:bg-emerald-600 disabled:opacity-50 text-white font-semibold py-3 rounded-lg transition-all flex items-center justify-center gap-2"
+        >
+          {loading ? (
+            <>
+              <div className="animate-spin h-4 w-4 border-2 border-white border-t-transparent rounded-full"></div>
+              Creating account...
+            </>
+          ) : (
+            <>
+              <UserPlus className="h-4 w-4" />
+              Sign Up
+            </>
+          )}
         </button>
 
-        <p className="text-sm mt-3">
-          Already registered? <Link to="/login" className="text-blue-600">Login</Link>
+        <p className="text-center text-slate-400 mt-4">
+          Already have an account? <Link to="/login" className="text-emerald-400 hover:text-emerald-300">Login</Link>
         </p>
       </form>
     </div>

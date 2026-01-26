@@ -1,3 +1,52 @@
+# Environment variables
 .env
-node_modules
-config/
+.env.local
+.env.*.local
+
+# Dependencies
+node_modules/
+package-lock.json
+yarn.lock
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# OS files
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+*~
+
+# IDE
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+*.code-workspace
+
+# Build and dist
+dist/
+build/
+
+# Uploaded files (except keeping directory structure)
+uploads/*
+!uploads/.gitkeep
+reports/*
+!reports/.gitkeep
+
+# Local development
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Misc
+*.pem
+*.key
+*.cert

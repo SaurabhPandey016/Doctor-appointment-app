@@ -49,8 +49,95 @@ export const loginUser = async (req, res) => {
       user: {
         _id: user._id,
         name: user.name,
-        email: user.email
+        email: user.email,
+        phone: user.phone,
+        profilePicture: user.profilePicture
       }
+    })
+  } catch (err) {
+    res.status(500).json({ message: 'Server error' })
+  }
+}
+
+export const getUserProfile = async (req, res) => {
+  try {
+    const userId = req.user.id
+    const user = await User.findById(userId).select('-password')
+    
+    if (!user) {
+      return res.status(404).json({ message: 'User not found' })
+    }
+
+    res.status(200).json(user)
+  } catch (err) {
+    res.status(500).json({ message: 'Server error' })
+  }
+}
+
+export const updateUserProfile = async (req, res) => {
+  try {
+    const userId = req.user.id
+    const { name, email, phone } = req.body
+
+    const user = await User.findById(userId)
+    if (!user) {
+      return res.status(404).json({ message: 'User not found' })
+    }
+
+    // Check if email already exists for another user
+    if (email && email !== user.email) {
+      const emailExists = await User.findOne({ email })
+      if (emailExists) {
+        return res.status(400).json({ message: 'Email already in use' })
+      }
+    }
+
+    // Update fields
+    if (name) user.name = name
+    if (email) user.email = email
+    if (phone) user.phone = phone
+
+    // Update profile picture if file was uploaded
+    if (req.file) {
+      user.profilePicture = `/uploads/${req.file.filename}`
+    }
+
+    await user.save()
+
+    res.status(200).json({
+      message: 'Profile updated successfully',
+      user: {
+        _id: user._id,
+        name: user.name,
+        email: user.email,
+        phone: user.phone,
+        profilePicture: user.profilePicture
+      }
+    })
+  } catch (err) {
+    res.status(500).json({ message: 'Server error' })
+  }
+}
+
+export const uploadProfilePicture = async (req, res) => {
+  try {
+    if (!req.file) {
+      return res.status(400).json({ message: 'No file uploaded' })
+    }
+
+    const userId = req.user.id
+    const user = await User.findById(userId)
+    
+    if (!user) {
+      return res.status(404).json({ message: 'User not found' })
+    }
+
+    user.profilePicture = `/uploads/${req.file.filename}`
+    await user.save()
+
+    res.status(200).json({
+      message: 'Profile picture uploaded successfully',
+      profilePicture: user.profilePicture
     })
   } catch (err) {
     res.status(500).json({ message: 'Server error' })

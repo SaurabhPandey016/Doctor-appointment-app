@@ -24,7 +24,15 @@ const appointmentSchema = new mongoose.Schema(
     },
     report: {
       type: String
-    }
+    },
+    reports: [{
+      filename: String,
+      filepath: String,
+      uploadedAt: {
+        type: Date,
+        default: Date.now
+      }
+    }]
   },
   { timestamps: true }
 )
