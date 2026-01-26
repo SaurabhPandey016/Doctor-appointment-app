@@ -114,8 +114,6 @@ doctor-appointment-client/
 │   ├── components/
 │   │   ├── Header.jsx          # Navigation with profile dropdown
 │   │   ├── Footer.jsx          # Footer section
-│   │   ├── DoctorCard.jsx      # Doctor display card
-│   │   ├── Sidebar.jsx         # Sidebar navigation
 │   │   ├── ProtectedRoute.jsx  # Route protection HOC
 │   │   └── ...                 # Other components
 │   ├── pages/
@@ -126,7 +124,6 @@ doctor-appointment-client/
 │   │   ├── BookAppointment.jsx # Appointment booking
 │   │   ├── MyAppointments.jsx  # Appointments view + reports
 │   │   ├── MyProfile.jsx       # Profile management
-│   │   ├── Dashboard.jsx       # User dashboard
 │   │   └── ...                 # Other pages
 │   ├── features/
 │   │   └── auth/
