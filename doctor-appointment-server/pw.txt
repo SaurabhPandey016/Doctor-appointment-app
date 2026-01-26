@@ -1,2 +1,0 @@
-Mt565OnslYZtuBeg, 
-connection-string -> mongodb+srv://developersaurabh04_db_user:Mt565OnslYZtuBeg@cluster1.kdthjiv.mongodb.net/
