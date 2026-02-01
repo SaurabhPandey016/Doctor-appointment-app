@@ -50,3 +50,4 @@ reports/*
 *.pem
 *.key
 *.cert
+.vercel
