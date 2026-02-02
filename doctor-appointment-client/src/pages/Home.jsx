@@ -112,7 +112,7 @@ export default function Home() {
             <div className="flex items-center justify-center">
               <div className="w-full max-w-sm h-96 rounded-2xl overflow-hidden border border-emerald-900/30 shadow-2xl shadow-emerald-500/10">
                 <img 
-                  src="../public/banner2.png" 
+                  src="../banner2.png" 
                   alt="MediMeet Banner" 
                   className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
                   onError={(e) => {

@@ -36,7 +36,7 @@ export default function Header() {
     <header className="bg-gradient-to-r from-slate-900 via-emerald-900/70 to-slate-900 border-b border-emerald-500/20 shadow-lg sticky top-0 z-50">
       <div className="container mx-auto px-4 py-4 flex items-center justify-between">
         <Link to="/" className="flex items-center gap-3 hover:opacity-80 transition-opacity">
-          <img src="../public/logo-single.png" alt="MediMeet" className="h-10 w-10 rounded-lg" />
+          <img src="../logo-single.png" alt="MediMeet" className="h-10 w-10 rounded-lg" />
           <div>
             <span className="font-bold text-lg text-white">Medi</span>
             <span className="font-bold text-lg text-emerald-400">Meet</span>

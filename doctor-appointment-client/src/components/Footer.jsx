@@ -10,7 +10,7 @@ export default function Footer() {
         <div className="grid md:grid-cols-4 gap-8 mb-8">
           <div>
             <div className="flex items-center gap-2 mb-4">
-              <img src="../public/logo-single.png" alt="MediMeet" className="h-10 w-10 rounded-lg" />
+              <img src="../logo-single.png" alt="MediMeet" className="h-10 w-10 rounded-lg" />
               <div>
                 <span className="font-bold text-white">Medi</span>
                 <span className="font-bold text-emerald-400">Meet</span>
