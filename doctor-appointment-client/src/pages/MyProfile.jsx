@@ -82,7 +82,7 @@ export default function MyProfile() {
       const formData = new FormData()
       formData.append('profilePicture', file)
 
-      const res = await axios.post('http://localhost:5000/api/auth/upload-profile-picture', formData, {
+      const res = await axios.post('https://doctor-appointment-app-p51b.onrender.com/api/auth/upload-profile-picture', formData, {
         headers: {
           Authorization: `Bearer ${token}`,
           'Content-Type': 'multipart/form-data'
@@ -115,7 +115,7 @@ export default function MyProfile() {
 
     try {
       setLoading(true)
-      const res = await axios.put('http://localhost:5000/api/auth/profile', editData, {
+      const res = await axios.put('https://doctor-appointment-app-p51b.onrender.com/api/auth/profile', editData, {
         headers: { Authorization: `Bearer ${token}` }
       })
 
@@ -181,7 +181,7 @@ export default function MyProfile() {
                   <div className="w-32 h-32 rounded-full border-4 border-emerald-500/50 bg-gradient-to-br from-slate-800 to-slate-900 flex items-center justify-center overflow-hidden shadow-xl shadow-emerald-500/20">
                     {profileData.profilePicture ? (
                       <img
-                        src={`http://localhost:5000${profileData.profilePicture}`}
+                        src={`https://doctor-appointment-app-p51b.onrender.com${profileData.profilePicture}`}
                         alt="Profile"
                         className="w-full h-full object-cover"
                       />

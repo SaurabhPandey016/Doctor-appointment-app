@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import { Mail, Phone, MapPin, Facebook, Twitter, Linkedin, Instagram } from 'lucide-react'
+import { Mail, Phone, MapPin, Facebook, Twitter, Linkedin, Instagram, Github } from 'lucide-react'
 
 export default function Footer() {
   const currentYear = new Date().getFullYear()
@@ -61,15 +61,17 @@ export default function Footer() {
           <p className="text-slate-500 text-sm text-center md:text-left">© {currentYear} MediMeet. All rights reserved.</p>
           <p className="text-slate-500 text-sm text-center md:text-left">Made with ❤️ by Saurabh Pandey</p> 
           <div className="flex gap-4 mt-4 md:mt-0">
-            <a href="#" className="text-slate-400 hover:text-emerald-400 transition-colors">
-              <Instagram className="h-5 w-5" />
-            </a>
-            <a href="#" className="text-slate-400 hover:text-emerald-400 transition-colors">
-              <Twitter className="h-5 w-5" />
-            </a>
-            <a href="#" className="text-slate-400 hover:text-emerald-400 transition-colors">
+            
+            <a href="https://www.linkedin.com/in/saurabhpandey-/" className="text-slate-400 hover:text-emerald-400 transition-colors">
               <Linkedin className="h-5 w-5" />
             </a>
+            <a href="https://www.instagram.com/mr._bunny_?igsh=dHhiNXhmaXd1N2oz" className="text-slate-400 hover:text-emerald-400 transition-colors">
+              <Instagram className="h-5 w-5" />
+            </a>
+            <a href="https://github.com/SaurabhPandey016/" className="text-slate-400 hover:text-emerald-400 transition-colors">
+              <Github className="h-5 w-5" />
+            </a>
+            
           </div>
         </div>
       </div>

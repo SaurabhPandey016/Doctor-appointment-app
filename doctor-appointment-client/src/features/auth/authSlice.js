@@ -6,7 +6,7 @@ export const loginUser = createAsyncThunk(
   async (data, thunkAPI) => {
     try {
       const res = await axios.post(
-        'http://localhost:5000/api/auth/login',
+        'https://doctor-appointment-app-p51b.onrender.com/api/auth/login',
         data
       )
       return res.data

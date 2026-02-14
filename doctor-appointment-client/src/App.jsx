@@ -15,7 +15,7 @@ import ProtectedRoute from './components/ProtectedRoute'
 export default function App() {
   return (
     <BrowserRouter>
-      <ToastContainer position="bottom-right" autoClose={2000} />
+      <ToastContainer position="bottom-right" autoClose={2000} theme="dark" />
       <Header />
       <div className="min-h-screen flex flex-col">
         <main className="flex-grow">
@@ -25,7 +25,6 @@ export default function App() {
             <Route path='/' element={<Home />} />
             <Route path='/services' element={<Services />} />
             <Route element={<ProtectedRoute />}>
-
               <Route path='/book' element={<BookAppointment />} />
               <Route path='/appointments' element={<MyAppointments />} />
               <Route path='/profile' element={<MyProfile />} />

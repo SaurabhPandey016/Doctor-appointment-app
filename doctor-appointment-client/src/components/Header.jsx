@@ -70,7 +70,7 @@ export default function Header() {
               <div className="w-10 h-10 rounded-full border-2 border-emerald-500/50 bg-gradient-to-br from-slate-800 to-slate-900 flex items-center justify-center overflow-hidden shadow-lg">
                 {user.profilePicture ? (
                   <img
-                    src={`http://localhost:5000${user.profilePicture}`}
+                    src={`https://doctor-appointment-app-p51b.onrender.com${user.profilePicture}`}
                     alt={user.name}
                     className="w-full h-full object-cover"
                   />

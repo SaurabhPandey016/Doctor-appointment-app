@@ -15,7 +15,7 @@ export default function MyAppointments() {
   useEffect(() => {
     const fetchAppointments = async () => {
       try {
-        const res = await axios.get('http://localhost:5000/api/appointments', {
+        const res = await axios.get('https://doctor-appointment-app-p51b.onrender.com/api/appointments', {
           headers: { Authorization: `Bearer ${token}` }
         })
         setAppointments(res.data)
@@ -32,7 +32,7 @@ export default function MyAppointments() {
     if (!window.confirm('Are you sure you want to cancel this appointment?')) return
 
     try {
-      await axios.delete(`http://localhost:5000/api/appointments/${id}`, {
+      await axios.delete(`https://doctor-appointment-app-p51b.onrender.com/api/appointments/${id}`, {
         headers: { Authorization: `Bearer ${token}` }
       })
       setAppointments(appointments.filter(a => a._id !== id))
@@ -61,7 +61,7 @@ export default function MyAppointments() {
       const formData = new FormData()
       formData.append('report', file)
 
-      const res = await axios.post(`http://localhost:5000/api/appointments/${appointmentId}/upload-report`, formData, {
+      const res = await axios.post(`https://doctor-appointment-app-p51b.onrender.com/api/appointments/${appointmentId}/upload-report`, formData, {
         headers: {
           Authorization: `Bearer ${token}`,
           'Content-Type': 'multipart/form-data'
@@ -87,7 +87,7 @@ export default function MyAppointments() {
     if (!window.confirm('Delete this report?')) return
 
     try {
-      await axios.delete(`http://localhost:5000/api/appointments/${appointmentId}/report/${reportIndex}`, {
+      await axios.delete(`https://doctor-appointment-app-p51b.onrender.com/api/appointments/${appointmentId}/report/${reportIndex}`, {
         headers: { Authorization: `Bearer ${token}` }
       })
 

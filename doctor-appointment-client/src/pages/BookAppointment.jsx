@@ -40,7 +40,7 @@ export default function BookAppointment() {
         comments: form.concerns ? `${form.concerns}` : ''
       }
 
-      await axios.post('http://localhost:5000/api/appointments', appointmentData, {
+      await axios.post('https://doctor-appointment-app-p51b.onrender.com/api/appointments', appointmentData, {
         headers: { Authorization: `Bearer ${token}` }
       })
       setSuccess(true)
