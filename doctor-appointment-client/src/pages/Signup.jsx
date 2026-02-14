@@ -19,7 +19,7 @@ export default function Signup() {
 
     setLoading(true)
     try {
-      await axios.post('http://localhost:5000/api/auth/register', form)
+      await axios.post('https://doctor-appointment-app-p51b.onrender.com/api/auth/register', form)
       toast.success('Signup Successful! Please login.')
       navigate('/login')
     } catch(error) {
