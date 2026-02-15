@@ -41,7 +41,7 @@ export default function MyProfile() {
   const fetchUserProfile = async () => {
     try {
       setProfileLoading(true)
-      const res = await axios.get('http://localhost:5000/api/auth/profile', {
+      const res = await axios.get('https://doctor-appointment-app-p51b.onrender.com/api/auth/profile', {
         headers: { Authorization: `Bearer ${token}` }
       })
       setProfileData(res.data)
