@@ -1,17 +1,29 @@
+// Import required dependencies
 import { useState } from 'react'
-import axios from 'axios'
-import { useNavigate, Link } from 'react-router-dom'
-import { toast } from 'react-toastify'
-import { UserPlus, Mail, Phone, Lock, User } from 'lucide-react'
+import axios from 'axios'                 // HTTP client for API requests
+import { useNavigate, Link } from 'react-router-dom' // Navigation
+import { toast } from 'react-toastify'   // Toast notifications
+import { UserPlus, Mail, Phone, Lock, User } from 'lucide-react' // Icons
 
 export default function Signup() {
+  // Form state for signup fields
   const [form, setForm] = useState({ name: '', email: '', phone: '', password: '' })
   const [loading, setLoading] = useState(false)
+  
+  // Hook for navigation after successful signup
   const navigate = useNavigate()
 
+  /**
+   * Handle signup form submission
+   * Validates all fields before sending to backend
+   * On success: shows success message and navigates to login
+   * On failure: displays error from server
+   */
   const submitHandler = async (e) => {
+    // Prevent default form submission behavior
     e.preventDefault()
     
+    // Validate all required fields are filled
     if (!form.name || !form.email || !form.phone || !form.password) {
       toast.error('Please fill in all fields')
       return
@@ -19,10 +31,14 @@ export default function Signup() {
 
     setLoading(true)
     try {
+      // Send signup request to backend
       await axios.post('https://doctor-appointment-app-p51b.onrender.com/api/auth/register', form)
+      // Show success notification
       toast.success('Signup Successful! Please login.')
+      // Redirect to login page so user can authenticate
       navigate('/login')
     } catch(error) {
+      // Display server error message or generic error
       toast.error(error.response?.data?.message || 'Signup Failed')
     } finally {
       setLoading(false)
