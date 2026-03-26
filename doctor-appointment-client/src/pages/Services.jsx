@@ -3,7 +3,7 @@ import { SPECIALTIES } from '@/lib/specialities'
 import { useNavigate } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import { toast } from 'react-toastify'
-import { Star, Calendar, Users } from 'lucide-react'
+import { Star, Calendar, Users, User } from 'lucide-react'
 
   export const mockDoctors = {
     'Cardiology': [
@@ -80,11 +80,14 @@ export default function Services() {
   const DoctorCard = ({ doctor }) => (
     <div className="group bg-gradient-to-br from-slate-900 to-slate-900/50 border border-emerald-900/20 rounded-xl p-6 hover:border-emerald-500/50 transition-all hover:shadow-xl hover:shadow-emerald-500/10 cursor-pointer">
       <div className="mb-4">
-        <img 
-          // src="{doctor.imageUrl || '/logo-single.png'}"
-          // alt={doctor.name}
+
+      <User className="w-full h-48 object-cover rounded-lg group-hover:scale-105 transition-transform" />
+
+        {/* <img 
+          src="{doctor.imageUrl || '/logo-single.png'}"
+          alt={<User className="h-8 w-8 text-emerald-400" />}
           className="w-full h-48 object-cover rounded-lg group-hover:scale-105 transition-transform"
-        />
+        /> */}
       </div>
       
       <h3 className="text-lg font-bold text-white mb-1">{doctor.name}</h3>

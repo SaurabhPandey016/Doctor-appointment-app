@@ -99,9 +99,9 @@ export default function MyProfile() {
         profilePicture: res.data.profilePicture
       }))
 
-      toast.success('Profile picture updated successfully')
+      toast.success('This feature is coming soon...')
     } catch (error) {
-      toast.error(error.response?.data?.message || 'Failed to upload profile picture')
+      toast.success(error.response?.data?.message || 'This feature is coming soon...')
     } finally {
       setUploadingPhoto(false)
     }

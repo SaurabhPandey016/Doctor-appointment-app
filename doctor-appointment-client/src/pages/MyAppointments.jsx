@@ -75,9 +75,9 @@ export default function MyAppointments() {
         return apt
       }))
 
-      toast.success('Report uploaded successfully')
+      toast.success('This Feature is coming soon..')
     } catch (error) {
-      toast.error(error.response?.data?.message || 'Failed to upload report')
+      toast.success(error.response?.data?.message || 'This Feature is coming soon...')
     } finally {
       setUploadingId(null)
     }
@@ -221,7 +221,7 @@ export default function MyAppointments() {
                             {appointment.reports.map((report, idx) => (
                               <div key={idx} className="flex items-center justify-between bg-slate-800/50 p-2 rounded border border-slate-700/50">
                                 <a
-                                  href={`http://localhost:5000${report.filepath}`}
+                                  href={`https://doctor-appointment-app-p51b.onrender.com${report.filepath}`}
                                   download
                                   className="flex items-center gap-2 text-emerald-400 hover:text-emerald-300 text-sm flex-1"
                                 >
