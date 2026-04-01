@@ -42,6 +42,42 @@ import { Star, Calendar, Users, User } from 'lucide-react'
       { id: 23, name: 'Dr. Thomas Kelly', specialty: 'Orthopedics', experience: 10, rating: 4.7, patients: 1720, description: 'Fracture and trauma care', image: '/logo-single.png' },
       { id: 24, name: 'Dr. Rachel Adams', specialty: 'Orthopedics', experience: 9, rating: 4.6, patients: 1580, description: 'Arthroscopy and minimally invasive', image: '/logo-single.png' },
     ],
+    'Endocrinology': [
+      { id: 25, name: 'Dr. Richard Harris', specialty: 'Endocrinology', experience: 16, rating: 4.9, patients: 2400, description: 'Joint replacement and sports medicine', image: '/logo-single.png' },
+      { id: 26, name: 'Dr. Lisa Anderson', specialty: 'Endocrinology', experience: 12, rating: 4.8, patients: 1950, description: 'Spine surgery specialist', image: '/logo-single.png' },
+      { id: 27, name: 'Dr. Thomas Kelly', specialty: 'Endocrinology', experience: 10, rating: 4.7, patients: 1720, description: 'Fracture and trauma care', image: '/logo-single.png' },
+      { id: 28, name: 'Dr. Rachel Adams', specialty: 'Endocrinology', experience: 9, rating: 4.6, patients: 1580, description: 'Arthroscopy and minimally invasive', image: '/logo-single.png' },
+    ],
+    'Ophthalmology': [
+      { id: 29, name: 'Dr. Richard Harris', specialty: 'Ophthalmology', experience: 16, rating: 4.9, patients: 2400, description: 'Joint replacement and sports medicine', image: '/logo-single.png' },
+      { id: 30, name: 'Dr. Michelle Young', specialty: 'Ophthalmology', experience: 12, rating: 4.8, patients: 1950, description: 'Spine surgery specialist', image: '/logo-single.png' },
+      { id: 31, name: 'Dr. Lisa Anderson', specialty: 'Ophthalmology', experience: 10, rating: 4.7, patients: 1720, description: 'Fracture and trauma care', image: '/logo-single.png' },
+      { id: 32, name: 'Dr. Rachel Adams', specialty: 'Ophthalmology', experience: 9, rating: 4.6, patients: 1580, description: 'Arthroscopy and minimally invasive', image: '/logo-single.png' },
+    ],
+    'Gastroenterology': [
+      { id: 33, name: 'Dr. Richard Harris', specialty: 'Gastroenterology', experience: 16, rating: 4.9, patients: 2400, description: 'Joint replacement and sports medicine', image: '/logo-single.png' },
+      { id: 34, name: 'Dr. Michelle Young', specialty: 'Gastroenterology', experience: 12, rating: 4.8, patients: 1950, description: 'Spine surgery specialist', image: '/logo-single.png' },
+      { id: 35, name: 'Dr. Lisa Anderson', specialty: 'Gastroenterology', experience: 10, rating: 4.7, patients: 1720, description: 'Fracture and trauma care', image: '/logo-single.png' },
+      { id: 36, name: 'Dr. Rachel Adams', specialty: 'Gastroenterology', experience: 9, rating: 4.6, patients: 1580, description: 'Arthroscopy and minimally invasive', image: '/logo-single.png' },
+    ],
+    'Obstetrics & Gynecology': [
+      { id: 37, name: 'Dr. Richard Harris', specialty: 'Obstetrics & Gynecology', experience: 16, rating: 4.9, patients: 2400, description: 'Joint replacement and sports medicine', image: '/logo-single.png' },
+      { id: 38, name: 'Dr. Michelle Young', specialty: 'Obstetrics & Gynecology', experience: 12, rating: 4.8, patients: 1950, description: 'Spine surgery specialist', image: '/logo-single.png' },
+      { id: 39, name: 'Dr. Thomas Kelly', specialty: 'Obstetrics & Gynecology', experience: 10, rating: 4.7, patients: 1720, description: 'Fracture and trauma care', image: '/logo-single.png' },
+      { id: 40, name: 'Dr. Lisa Anderson', specialty: 'Obstetrics & Gynecology', experience: 9, rating: 4.6, patients: 1580, description: 'Arthroscopy and minimally invasive', image: '/logo-single.png' },
+    ],
+    'Oncology': [
+      { id: 41, name: 'Dr. Lisa Anderson', specialty: 'Oncology', experience: 16, rating: 4.9, patients: 2400, description: 'Joint replacement and sports medicine', image: '/logo-single.png' },
+      { id: 42, name: 'Dr. Michelle Young', specialty: 'Oncology', experience: 12, rating: 4.8, patients: 1950, description: 'Spine surgery specialist', image: '/logo-single.png' },
+      { id: 43, name: 'Dr. Thomas Kelly', specialty: 'Oncology', experience: 10, rating: 4.7, patients: 1720, description: 'Fracture and trauma care', image: '/logo-single.png' },
+      { id: 44, name: 'Dr. Rachel Adams', specialty: 'Oncology', experience: 9, rating: 4.6, patients: 1580, description: 'Arthroscopy and minimally invasive', image: '/logo-single.png' },
+    ],
+    'Psychiatry': [
+      { id: 45, name: 'Dr. Richard Harris', specialty: 'Psychiatry', experience: 16, rating: 4.9, patients: 2400, description: 'Joint replacement and sports medicine', image: '/logo-single.png' },
+      { id: 46, name: 'Dr. Lisa Anderson', specialty: 'Psychiatry', experience: 12, rating: 4.8, patients: 1950, description: 'Spine surgery specialist', image: '/logo-single.png' },
+      { id: 47, name: 'Dr. Thomas Kelly', specialty: 'Psychiatry', experience: 10, rating: 4.7, patients: 1720, description: 'Fracture and trauma care', image: '/logo-single.png' },
+      { id: 48, name: 'Dr. Rachel Adams', specialty: 'Psychiatry', experience: 9, rating: 4.6, patients: 1580, description: 'Arthroscopy and minimally invasive', image: '/logo-single.png' },
+    ],
   }
 
 export default function Services() {
@@ -143,7 +179,7 @@ export default function Services() {
         <div className="mb-12">
           <h2 className="text-2xl font-bold text-white mb-6">Select a Specialty</h2>
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-            {SPECIALTIES.slice(0, 6).map((specialty) => (
+            {SPECIALTIES.slice(0, 12).map((specialty) => (
               <button
                 key={specialty.name}
                 onClick={() => setSelectedSpecialty(specialty.name)}
