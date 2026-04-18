@@ -13,6 +13,10 @@ import serviceRoutes from './routes/serviceRoutes.js'      // Service listing
 import path from 'path'
 import { fileURLToPath } from 'url'
 
+// Import Swagger
+import swaggerJsdoc from 'swagger-jsdoc'
+import swaggerUi from 'swagger-ui-express'
+
 // Load environment variables from .env file
 dotenv.config()
 
@@ -25,6 +29,48 @@ const app = express()
 // Get current directory path (workaround for ESM modules)
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
+
+// Swagger definition
+const swaggerDefinition = {
+  openapi: '3.0.0',
+  info: {
+    title: 'Doctor Appointment API',
+    version: '1.0.0',
+    description: 'API for managing doctor appointments',
+  },
+  servers: [
+    {
+      url: 'https://doctor-appointment-app-p51b.onrender.com',
+      description: 'Production server',
+    },
+  ],
+  components: {
+    securitySchemes: {
+      bearerAuth: {
+        type: 'http',
+        scheme: 'bearer',
+        bearerFormat: 'JWT',
+      },
+    },
+  },
+  security: [
+    {
+      bearerAuth: [],
+    },
+  ],
+}
+
+// Options for swagger-jsdoc
+const options = {
+  swaggerDefinition,
+  apis: ['./routes/*.js'], // Paths to files containing OpenAPI definitions
+}
+
+// Initialize swagger-jsdoc
+const specs = swaggerJsdoc(options)
+
+// Serve Swagger UI
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(specs))
 
 // Enable CORS for frontend communication from any origin
 app.use(cors())

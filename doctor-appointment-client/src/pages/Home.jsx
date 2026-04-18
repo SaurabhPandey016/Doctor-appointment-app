@@ -33,7 +33,7 @@ function FAQItem({ question, answer, isOpen, onToggle }) {
         <ChevronDown className={`h-5 w-5 text-emerald-400 transition-transform duration-300 ${isOpen ? 'rotate-180' : ''}`} />
       </button>
       {isOpen && (
-        <div className="px-6 py-4 border-t border-emerald-900/20 bg-slate-900/20">
+        <div className="px-6 py-4 border-t border-emerald-900/20 bg-slate-900/20 transition-all">
           <p className="text-slate-400 leading-relaxed">{answer}</p>
         </div>
       )}

@@ -1,7 +1,6 @@
 // Import Mongoose for database schema definition
 import mongoose from 'mongoose'
 
-
 // Define User schema for storing user account information
 const userSchema = new mongoose.Schema({
 name: { type: String, required: true },                    // User's full name
