@@ -87,6 +87,10 @@ app.use('/api/auth', authRoutes)              // User authentication endpoints
 app.use('/api/appointments', appointmentRoutes) // Appointment CRUD operations
 app.use('/api/services', serviceRoutes)       // Available services/specialties
 
+app.get('/', (req, res) => {
+  res.send('Welcome to the Doctor Appointment API');
+});
+
 const PORT = process.env.PORT || 5000;
 
 app.listen(PORT, () => {
